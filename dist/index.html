@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#15191a" />
+    <meta
+      name="description"
+      content="A cinematic, scroll-controlled journey through a modern hillside residence."
+    />
+    <title>Hillside Residence</title>
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2315191a'/%3E%3Cpath d='M10 38 32 19l22 19v12H39V36H25v14H10Z' fill='%23d8a05c'/%3E%3C/svg%3E"
+    />
+    <link rel="preload" as="image" href="./frames/ezgif-frame-001.jpg" fetchpriority="high" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="sequence" id="residence" aria-labelledby="hero-title">
+      <div class="sequence__sticky">
+        <canvas class="sequence__canvas" aria-hidden="true"></canvas>
+        <div class="sequence__veil" aria-hidden="true"></div>
+
+        <div class="hero-copy">
+          <p class="hero-copy__eyebrow">A private hillside residence</p>
+          <h1 id="hero-title">Live above the ordinary.</h1>
+          <p class="hero-copy__description">
+            Architecture shaped by the horizon, designed for a quieter point of view.
+          </p>
+          <a class="hero-copy__cta" href="#sequence-end">
+            Explore the residence
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="sequence__loading" role="status" aria-live="polite">
+          <span class="sequence__loading-bar"></span>
+          <span class="sequence__loading-label">Preparing the view</span>
+        </div>
+
+        <div class="sequence__hint" aria-hidden="true">
+          <span>Scroll to enter</span>
+          <i></i>
+        </div>
+      </div>
+    </section>
+    <div id="sequence-end" class="sequence-end" aria-hidden="true"></div>
+
+    <noscript>
+      <style>
+        .sequence { height: 100vh; }
+        .sequence__canvas, .sequence__loading, .sequence__hint { display: none; }
+        .sequence__sticky { background: url('./frames/ezgif-frame-001.jpg') center / cover no-repeat; }
+      </style>
+    </noscript>
+    <script src="./app.js" defer></script>
+  </body>
+</html>
