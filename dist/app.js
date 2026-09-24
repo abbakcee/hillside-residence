@@ -7,6 +7,7 @@
   const sticky = document.querySelector(".sequence__sticky");
   const canvas = document.querySelector(".sequence__canvas");
   const copy = document.querySelector(".hero-copy");
+  const parlorAnnotation = document.querySelector(".parlor-annotation");
   const hint = document.querySelector(".sequence__hint");
   const loading = document.querySelector(".sequence__loading");
   const context = canvas.getContext("2d", { alpha: false, desynchronized: true });
@@ -132,6 +133,14 @@
     copy.style.setProperty("--copy-blur", `${2.5 * easedCopy}px`);
     copy.style.setProperty("--copy-events", copyProgress > 0.7 ? "none" : "auto");
     hint.style.setProperty("--hint-opacity", 1 - clamp(progress / 0.025, 0, 1));
+
+    const annotationIn = clamp((nextFrame - 120) / 16, 0, 1);
+    const annotationOut = 1 - clamp((nextFrame - 178) / 12, 0, 1);
+    const annotationVisibility = Math.min(annotationIn, annotationOut);
+    const easedAnnotation = annotationVisibility * annotationVisibility * (3 - 2 * annotationVisibility);
+    parlorAnnotation.style.setProperty("--annotation-opacity", easedAnnotation);
+    parlorAnnotation.style.setProperty("--annotation-y", `${12 * (1 - easedAnnotation)}px`);
+    parlorAnnotation.style.setProperty("--annotation-scale", 0.98 + 0.02 * easedAnnotation);
   }
 
   function requestScrollUpdate() {
